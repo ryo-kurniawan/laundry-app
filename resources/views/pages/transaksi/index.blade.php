@@ -75,30 +75,36 @@
                                                 </td>
                                                 <td>
                                                     @if ($t['status'] == 0)
-                                                    Pakaian sedang diberi kode
+                                                    Driver sedang menjempul pakaian anda
                                                     @endif
                                                     @if ($t['status'] == 1)
-                                                    Pakaian sedang dilakukan pengecekan
+                                                    Pakaian Sedang Ditimbang
                                                     @endif
                                                     @if ($t['status'] == 2)
-                                                    Pakaian sedang dicuci
+                                                    Pakaian sedang diberi kode
                                                     @endif
                                                     @if ($t['status'] == 3)
-                                                    Pakaian sedang dikeringkan
+                                                    Pakaian sedang dilakukan pengecekan
                                                     @endif
                                                     @if ($t['status'] == 4)
-                                                    Pakaian sedang disetrika
+                                                    Pakaian sedang dicuci
                                                     @endif
                                                     @if ($t['status'] == 5)
-                                                    Pakaian sedang dipacking
+                                                    Pakaian sedang dikeringkan
                                                     @endif
                                                     @if ($t['status'] == 6)
-                                                    Laundry selesai
+                                                    Pakaian sedang disetrika
                                                     @endif
                                                     @if ($t['status'] == 7)
-                                                    Driver mengantarkan pakaian anda
+                                                    Pakaian sedang dipacking
                                                     @endif
                                                     @if ($t['status'] == 8)
+                                                    Laundry selesai
+                                                    @endif
+                                                    @if ($t['status'] == 9)
+                                                    Driver mengantarkan pakaian anda
+                                                    @endif
+                                                    @if ($t['status'] == 10)
                                                     Pengantaran dan pembayaran selesai
                                                     @endif
 
@@ -109,6 +115,11 @@
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
+                                                        </a>
+                                                        <a href='{{ route('transaksi.hubungi', $t['_id']) }}'
+                                                            class="btn btn-sm btn-success btn-icon ml-2">
+                                                            <i class="fas fa-whatsapp"></i>
+                                                            Hubungi Pelanggan
                                                         </a>
 
                                                         <form action="{{ route('transaksi.destroy', $t['_id']) }}"
@@ -135,6 +146,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </div>
@@ -142,6 +154,5 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-
     <!-- Page Specific JS File -->
 @endpush

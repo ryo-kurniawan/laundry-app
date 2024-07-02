@@ -151,15 +151,17 @@
                                     <div class="form-group">
                                         <label>Status</label>
                                         <select class="form-control select2" name="status">
-                                            <option value="0">Pakaian sedang diberi kode</option>
-                                            <option value="1">Pakaian sedang dilakukan pengecekan</option>
-                                            <option value="2">Pakaian sedang dicuci</option>
-                                            <option value="3">Pakaian sedang dikeringkan</option>
-                                            <option value="4">Pakaian sedang disetrika</option>
-                                            <option value="5">Pakaian sedang dipacking</option>
-                                            <option value="6">Laundry selesai</option>
-                                            <option value="7">Driver mengantarkan pakaian anda</option>
-                                            <option value="8">Pengantaran dan pembayaran selesai</option>
+                                            <option value="0">Driver sedang menjemput pakaian anda</option>
+                                            <option value="1">Pakaian sedang ditimbang</option>
+                                            <option value="2">Pakaian sedang diberi kode</option>
+                                            <option value="3">Pakaian sedang dilakukan pengecekan</option>
+                                            <option value="4">Pakaian sedang dicuci</option>
+                                            <option value="5">Pakaian sedang dikeringkan</option>
+                                            <option value="6">Pakaian sedang disetrika</option>
+                                            <option value="7">Pakaian sedang dipacking</option>
+                                            <option value="8">Laundry selesai</option>
+                                            <option value="9">Driver mengantarkan pakaian anda</option>
+                                            <option value="10">Pengantaran dan pembayaran selesai</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

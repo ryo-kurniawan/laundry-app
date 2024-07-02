@@ -30,9 +30,62 @@ class TransaksiController extends Controller
         }
     }
 
+    public function hubungi($id)
+{
+    // Buat instance client Guzzle untuk melakukan permintaan HTTP
+    $client = new Client();
+
+    // Ambil data transaksi berdasarkan ID
+    $response = $client->get('http://localhost:5001/transaksi/getbyid/' . $id);
+    $transactionData = json_decode($response->getBody()->getContents(), true);
+
+    if ($transactionData['status'] !== 200) {
+        return redirect()->back()->with('error', 'Gagal mengambil data transaksi.');
+    }
+
+    $transaction = $transactionData['data'];
+
+    // Ambil nomor telepon dari data transaksi
+    $phoneNumber = $transaction['idUser']['telepon'];
+
+    // Siapkan pesan yang akan dikirim
+    $message = "**Andras Laundry**\n\n";
+    $message .= "Terima kasih telah menggunakan layanan kami.\n";
+    $message .= "Berikut adalah detail transaksi Anda:\n\n";
+    $message .= "Nama: " . $transaction['idUser']['namalengkap'] . "\n";
+    $message .= "Alamat: " . $transaction['idUser']['alamat'] . "\n";
+    $message .= "Order: " . $transaction['idPaket']['namapaket'] . " / " . $transaction['idLayanan']['layanan'] . "\n";
+    $message .= "Berat: " . $transaction['berat'] . " kg\n";
+    $message .= "Detail: " . str_replace("\r\n", "\n", $transaction['detail']) . "\n";
+    $message .= "Tanggal: " . date('d-m-Y', strtotime($transaction['tanggal'])) . "\n\n";
+    $message .= "Terima kasih!\nAndras Laundry";
+
+    // Encode the message properly
+    $encodedMessage = urlencode($message);
+
+    // Buat URL untuk WhatsApp
+    $url = 'https://api.whatsapp.com/send?phone=' . $phoneNumber . '&text=' . $encodedMessage;
+
+    // Redirect pengguna ke URL WhatsApp
+    return redirect()->away($url);
+}
     public function riwayat()
     {
-        return view('pages.transaksi.riwayat');
+        $client = new Client();
+        $url = 'http://127.0.0.1:5001/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
+
+        try {
+            $response = $client->request('GET', $url);
+            $data = json_decode($response->getBody(), true);
+
+            if ($data['status'] == 200) {
+                return view('pages.transaksi.riwayat', ['transaksis' => $data['data']]);
+            } else {
+                return back()->with('error', 'Gagal Mengambil Data');
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal Mengambil Data: ' . $e->getMessage());
+        }
     }
 
     /**

@@ -12,10 +12,10 @@
                 <a href="{{ url('/home') }}"
                     class="nav-link  "><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
-            <li class="menu-header">Pelanggan</li>
+            <li class="menu-header">Pengguna</li>
             <li class="nav-item {{ Request::is('pelanggan*') ? 'active' : ''}} ">
                 <a href="{{ route('pelanggan.index') }}"
-                    class="nav-link "><i class="fas fa-user"></i><span>Pelanggan</span></a>
+                    class="nav-link "><i class="fas fa-user"></i><span>Pengguna</span></a>
             </li>
             <li class="menu-header">Transaksi</li>
             <li class="nav-item {{ Request::is('transaksi*') ? 'active' : ''}} ">
@@ -25,6 +25,12 @@
             <li class="nav-item {{ Request::is('riwayat*') ? 'active' : ''}} ">
                 <a href="{{ route('riwayat') }}"
                     class="nav-link "><i class="fas fa-file"></i><span>Riwayat Transaksi</span></a>
+            </li>
+
+            <li class="menu-header">Laporan</li>
+            <li class="nav-item {{ Request::is('laporan*') ? 'active' : ''}} ">
+                <a href="{{ route('laporan') }}"
+                    class="nav-link "><i class="fas fa-file"></i><span>Laporan</span></a>
             </li>
             <li class="menu-header">Setting</li>
             <li class="nav-item {{ Request::is('settings*') ? 'active' : ''}} ">

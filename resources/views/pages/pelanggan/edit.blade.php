@@ -34,7 +34,7 @@
 
 
                 <div class="card">
-                    <form action="{{ route('pelanggan.update', $userData['data']['_id']) }}" method="POST">
+                    <form id="user-form" action="{{ route('pelanggan.update', $userData['data']['_id']) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="card-header">
@@ -95,7 +95,7 @@
 
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-primary" id="confirmation">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -106,4 +106,24 @@
 @endsection
 
 @push('scripts')
+<!-- JS Libraies -->
+<script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+<!-- Page Specific JS File -->
+<script>
+    document.getElementById('confirmation').addEventListener('click', function() {
+        swal({
+            title: 'Are you sure?',
+            text: 'Apakah anda yakin ingin mengubah data ini?',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willSubmit) => {
+            if (willSubmit) {
+                document.getElementById('user-form').submit();
+            }
+        });
+    });
+    </script>
 @endpush

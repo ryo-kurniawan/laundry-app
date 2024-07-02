@@ -22,6 +22,7 @@ Route::middleware('check.login')->group(function () {
     Route::resource('/pelanggan', \App\Http\Controllers\PelangganController::class);
     Route::resource('/transaksi', \App\Http\Controllers\TransaksiController::class);
     Route::get('/transaksi/{id}/cetak-nota', [\App\Http\Controllers\TransaksiController::class, 'cetakNota'])->name('transaksi.cetakNota');
+    Route::get('/hubungi/{id}', [\App\Http\Controllers\TransaksiController::class, 'hubungi'])->name('transaksi.hubungi');
 
     Route::name('settings.')->prefix('/settings')->group(function () {
         // Resource route
@@ -49,5 +50,7 @@ Route::middleware('check.login')->group(function () {
 
 
     Route::get('riwayat', [\App\Http\Controllers\TransaksiController::class, 'riwayat'])->name('riwayat');
+    Route::get('laporan', [\App\Http\Controllers\LaporanController::class, 'index'])->name('laporan');
+    Route::get('/laporan/cetak', [\App\Http\Controllers\LaporanController::class, 'cetak'])->name('laporan.cetak');
 });
 
