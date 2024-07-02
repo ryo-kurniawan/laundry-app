@@ -47,7 +47,7 @@
     <div id="app">
         <div class="main-wrapper">
             <!-- Header -->
-            @include('components.header')
+            @include('components.header', ['transaksi' => $transaksi])
 
             <!-- Sidebar -->
             @include('components.sidebar')
