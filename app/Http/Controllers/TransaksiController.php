@@ -69,24 +69,43 @@ class TransaksiController extends Controller
     // Redirect pengguna ke URL WhatsApp
     return redirect()->away($url);
 }
-    public function riwayat()
-    {
-        $client = new Client();
-        $url = 'http://127.0.0.1:5001/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
+public function riwayat(Request $request)
+{
+    $client = new \GuzzleHttp\Client();
+    $url = 'http://127.0.0.1:5001/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
 
-        try {
-            $response = $client->request('GET', $url);
-            $data = json_decode($response->getBody(), true);
+    try {
+        $response = $client->request('GET', $url);
+        $data = json_decode($response->getBody(), true);
 
-            if ($data['status'] == 200) {
-                return view('pages.transaksi.riwayat', ['transaksis' => $data['data']]);
-            } else {
-                return back()->with('error', 'Gagal Mengambil Data');
+        if ($data['status'] == 200) {
+            $transaksis = $data['data'];
+
+            // Filter data berdasarkan keyword (nama atau angka)
+            $keyword = $request->input('keyword');
+
+            if ($keyword) {
+                $transaksis = array_filter($transaksis, function ($t) use ($keyword) {
+                    $keyword = strtolower($keyword);
+                    $nama = strtolower($t['idUser']['namalengkap']);
+                    $paket = strtolower($t['idPaket']['namapaket']);
+                    $layanan = strtolower($t['idLayanan']['layanan']);
+                    $tanggal = date('d-m-Y', strtotime($t['tanggal']));
+                    return stripos($nama, $keyword) !== false ||
+                           stripos($paket, $keyword) !== false ||
+                           stripos($layanan, $keyword) !== false ||
+                           stripos($tanggal, $keyword) !== false;
+                });
             }
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal Mengambil Data: ' . $e->getMessage());
+
+            return view('pages.transaksi.riwayat', ['transaksis' => $transaksis]);
+        } else {
+            return back()->with('error', 'Gagal Mengambil Data');
         }
+    } catch (\Exception $e) {
+        return back()->with('error', 'Gagal Mengambil Data: ' . $e->getMessage());
     }
+}
 
     /**
      * Show the form for creating a new resource.
