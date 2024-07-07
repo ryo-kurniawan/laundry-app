@@ -132,7 +132,7 @@ class SettingController extends Controller
         ]);
 
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/paketlaundry/create';
+        $url = 'http://127.0.0.1:5001/paket/create';
 
         try {
             $response = $client->request('POST', $url, [
@@ -187,6 +187,7 @@ class SettingController extends Controller
         $request->validate([
             'promo' => 'required',
             'keterangan' => 'required',
+            'potongan' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -203,6 +204,10 @@ class SettingController extends Controller
                     [
                         'name' => 'keterangan',
                         'contents' => $request->keterangan,
+                    ],
+                    [
+                        'name' => 'potongan',
+                        'contents' => $request->potongan,
                     ],
                     [
                         'name' => 'image',
@@ -346,6 +351,7 @@ class SettingController extends Controller
     $request->validate([
         'promo' => 'required',
         'keterangan' => 'required',
+        'potongan' => 'required',
         'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
@@ -362,6 +368,10 @@ class SettingController extends Controller
             [
                 'name' => 'keterangan',
                 'contents' => $request->input('keterangan'),
+            ],
+            [
+                'name' => 'potongan',
+                'contents' => $request->input('potongan'),
             ]
         ];
 
@@ -440,7 +450,7 @@ class SettingController extends Controller
     public function destroyPaket($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/paketlaundry/delete/' . $id;
+        $url = 'http://127.0.0.1:5001/paket/delete/' . $id;
 
         try {
             $response = $client->request('DELETE', $url);

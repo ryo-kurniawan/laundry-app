@@ -40,12 +40,12 @@ class AppServiceProvider extends ServiceProvider
             $transaksi = array_slice($transaksi, 0, 5);
 
             // Share data to all views
-            View::share('transaksi', $transaksi);
+            View::share('transaksis', $transaksi);
         } else {
-            View::share('transaksi', []);
+            View::share('transaksis', []);
         }
     } catch (\Exception $e) {
-        View::share('transaksi', []);
+        View::share('transaksis', []);
     }
     }
 }
