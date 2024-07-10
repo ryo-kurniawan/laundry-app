@@ -47,7 +47,11 @@
                                 <h4>Total Pemasukan</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                @isset($totalPemasukan)
+                                {{ format_currency($totalPemasukan) }}
+                            @else
+                                0
+                            @endisset
                             </div>
                         </div>
                     </div>
