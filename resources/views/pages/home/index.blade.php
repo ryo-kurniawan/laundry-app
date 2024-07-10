@@ -28,7 +28,11 @@
                                 <h4>Total Transaksi</h4>
                             </div>
                             <div class="card-body">
-                                42
+                                @isset($jumlahTransaksi)
+                                {{ $jumlahTransaksi }}
+                            @else
+                                0
+                            @endisset
                             </div>
                         </div>
                     </div>
@@ -58,7 +62,11 @@
                                 <h4>Total Pelanggan</h4>
                             </div>
                             <div class="card-body">
-                                47
+                                @isset($jumlahPelanggan)
+            {{ $jumlahPelanggan }}
+        @else
+            0
+        @endisset
                             </div>
                         </div>
                     </div>

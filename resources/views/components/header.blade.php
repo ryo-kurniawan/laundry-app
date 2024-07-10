@@ -24,6 +24,7 @@
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
                     @foreach ($transaksis as $t)
+                    @if (!empty($transaksis))
                     <a href="#"
                     class="dropdown-item dropdown-item-unread">
                     <div class="dropdown-item-icon bg-primary text-white">
@@ -34,6 +35,7 @@
                         <div class="time text-primary">{{ $t['idUser']['namalengkap'] }} - {{ $t['idPaket']['namapaket'] }}</div>
                     </div>
                 </a>
+                    @endif
                     @endforeach
 
                 </div>
