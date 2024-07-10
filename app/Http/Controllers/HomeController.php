@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -81,6 +82,39 @@ class HomeController extends Controller
         'jumlahTransaksi' => $jumlahTransaksi,
         'totalPemasukan' => $totalPemasukan,
     ]);
+}
+
+public function ubahStatusDriver($id, Request $request)
+{
+    $status = $request->input('status');
+    $client = new \GuzzleHttp\Client();
+    $url = 'http://127.0.0.1:5001/user/edit-status-driver/' . $id;
+
+    try {
+        $response = $client->request('PUT', $url, [
+            'json' => [
+                'status' => $status
+            ],
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ]
+        ]);
+
+        $statusCode = $response->getStatusCode();
+        $responseBody = json_decode($response->getBody(), true);
+
+        if ($statusCode == 200 && isset($responseBody['sukses']) && $responseBody['sukses'] == true) {
+            // Perbarui sesi dengan status terbaru
+            Session::put('status', $status);
+            return redirect()->route('home.index')->with('success', 'Status updated successfully');
+        } else {
+            $errorMsg = isset($responseBody['msg']) ? $responseBody['msg'] : 'Failed to update status';
+            return back()->with('error', 'Failed to update status: ' . $errorMsg);
+        }
+    } catch (\Exception $e) {
+        return back()->with('error', 'Failed to update status: ' . $e->getMessage());
+    }
 }
 
 }

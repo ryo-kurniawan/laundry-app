@@ -18,6 +18,45 @@ class AuthController extends Controller
         return view('pages.auth.login');
     }
 
+    public function showRegister()
+    {
+        return view('pages.auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+            'namalengkap' => 'required|string',
+            'telepon' => 'required|string',
+        ]);
+        $client = new Client();
+        $url = 'http://127.0.0.1:5001/user/register';
+        try {
+            $response = $client->request('POST', $url, [
+                'json' => [
+                    'username' => $request->input('username'),
+                    'password' => $request->input('password'),
+                    'namalengkap' => $request->input('namalengkap'),
+                    'telepon' => $request->input('telepon'),
+                    'role' => 4,
+                ],
+            ]);
+
+            $statusCode = $response->getStatusCode();
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            if ($statusCode == 200) {
+                return redirect('/')->with('success', 'Registration successful');
+            } else {
+                return redirect('/register')->with('error', 'Registration failed: ' . $data['msg']);
+            }
+        } catch (\Exception $e) {
+            return redirect('/register')->with('error', 'Registration failed: ' . $e->getMessage());
+        }
+    }
+
     // public function proses_login(Request $request)
     // {
     //     $credentials = $request->validate([
@@ -63,7 +102,8 @@ class AuthController extends Controller
                     'username' => $data['data']['username'],
                     'name' => $data['data']['namalengkap'],
                     'phone' => $data['data']['telepon'],
-                    'role' => $data['data']['role']
+                    'role' => $data['data']['role'],
+                    'status' => $data['data']['status']
                 ]);
                 $request->session()->regenerate();
                 return redirect('/home');
