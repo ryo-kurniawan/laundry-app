@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\AuthController::class, 'index'])->name('login');
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'showRegister'])->name('showRegister');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register'])->name('register');
 Route::post('/proses_login', [\App\Http\Controllers\AuthController::class, 'proses_login']);
 Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('check.login')->group(function () {
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::put('/ubah-status-driver/{id}', [\App\Http\Controllers\HomeController::class, 'ubahStatusDriver'])->name('ubah-status-driver');
     Route::resource('/pelanggan', \App\Http\Controllers\PelangganController::class);
     Route::resource('/transaksi', \App\Http\Controllers\TransaksiController::class);
     Route::get('/transaksi/{id}/cetak-nota', [\App\Http\Controllers\TransaksiController::class, 'cetakNota'])->name('transaksi.cetakNota');

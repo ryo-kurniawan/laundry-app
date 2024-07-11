@@ -55,37 +55,41 @@
                                             <th>Harga</th>
                                             <th>Action</th>
                                         </tr>
+                                        @isset($paket)
                                         @foreach ($paket as $p)
-                                            <tr>
+                                        <tr>
 
-                                                <td>{{ $p['namapaket'] }}
-                                                </td>
-                                                <td>
-                                                    {{ format_currency($p['harga']) }}
-                                                </td>
+                                            <td>{{ $p['namapaket'] }}
+                                            </td>
+                                            <td>
+                                                {{ format_currency($p['harga']) }}
+                                            </td>
 
 
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('settings.edit-paket', $p['_id']) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href='{{ route('settings.edit-paket', $p['_id']) }}'
+                                                        class="btn btn-sm btn-info btn-icon">
+                                                        <i class="fas fa-edit"></i>
+                                                        Edit
+                                                    </a>
 
-                                                        <form action="{{ route('settings.destroy-paket', $p['_id']) }}"
-                                                            method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                    <form action="{{ route('settings.destroy-paket', $p['_id']) }}"
+                                                        method="POST" class="ml-2">
+                                                        <input type="hidden" name="_method" value="DELETE" />
+                                                        <input type="hidden" name="_token"
+                                                            value="{{ csrf_token() }}" />
+                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                            <i class="fas fa-times"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @else
+                                    <td colspan="3">Tidak ada Paket</td>
+                                    @endisset
 
 
                                     </table>
@@ -126,37 +130,42 @@
                                             <th>Layanan</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($layanan as $l)
+
                                             <tr>
+                                               @isset($layanan)
+                                               @foreach ($layanan as $l)
+                                               <td>{{ $loop->iteration }}
+                                               </td>
+                                               <td>
+                                                   {{ $l['layanan'] }}
+                                               </td>
 
-                                                <td>{{ $loop->iteration }}
-                                                </td>
-                                                <td>
-                                                    {{ $l['layanan'] }}
-                                                </td>
 
+                                               <td>
+                                                   <div class="d-flex justify-content-center">
+                                                       <a href='{{ route('settings.edit-layanan', $l['_id']) }}'
+                                                           class="btn btn-sm btn-info btn-icon">
+                                                           <i class="fas fa-edit"></i>
+                                                           Edit
+                                                       </a>
 
-                                                <td>
-                                                    <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('settings.edit-layanan', $l['_id']) }}'
-                                                            class="btn btn-sm btn-info btn-icon">
-                                                            <i class="fas fa-edit"></i>
-                                                            Edit
-                                                        </a>
-
-                                                        <form action="{{ route('settings.destroy-layanan', $l['_id']) }}"
-                                                            method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </td>
+                                                       <form action="{{ route('settings.destroy-layanan', $l['_id']) }}"
+                                                           method="POST" class="ml-2">
+                                                           <input type="hidden" name="_method" value="DELETE" />
+                                                           <input type="hidden" name="_token"
+                                                               value="{{ csrf_token() }}" />
+                                                           <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                               <i class="fas fa-times"></i> Delete
+                                                           </button>
+                                                       </form>
+                                                   </div>
+                                               </td>
+                                               @endforeach
+                                               @else
+                                               <td colspan="3">Tidak ada Layanan</td>
+                                               @endisset
                                             </tr>
-                                        @endforeach
+
 
 
                                     </table>
@@ -197,9 +206,10 @@
                                             <th>Keterangan</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($promo as $pr)
-                                            <tr>
 
+                                            <tr>
+                                                @isset($promo)
+                                                @foreach ($promo as $pr)
                                                 <td>
                                                     @if (!empty($pr['image']))
                     <img src="http://127.0.0.1:5001/static/{{ $pr['image'] }}" alt="{{ $pr['promo'] }}" style="max-width: 100px;">
@@ -229,8 +239,12 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                                @endforeach
+                                                @else
+                                                <td colspan="3">Tidak ada Promo</td>
+                                                @endisset
                                             </tr>
-                                        @endforeach
+
 
 
                                     </table>

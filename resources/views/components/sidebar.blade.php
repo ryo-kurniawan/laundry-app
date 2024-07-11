@@ -12,6 +12,7 @@
                 <a href="{{ url('/home') }}"
                     class="nav-link  "><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
+            @if (Session::get('role') == 2 || Session::get('role') == 3)
             <li class="menu-header">Pengguna</li>
             <li class="nav-item {{ Request::is('pelanggan*') ? 'active' : ''}} ">
                 <a href="{{ route('pelanggan.index') }}"
@@ -37,6 +38,8 @@
                 <a href="{{ route('settings.index') }}"
                     class="nav-link "><i class="fas fa-cog"></i><span>Settings</span></a>
             </li>
+            @endif
+
 
         </ul>
     </aside>
