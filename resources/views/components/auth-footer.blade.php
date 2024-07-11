@@ -1,3 +1,3 @@
   <div class="simple-footer">
-      Copyright &copy; Tanu Wijaya 2024
+      Copyright &copy; Andras Laundry 2024
   </div>
