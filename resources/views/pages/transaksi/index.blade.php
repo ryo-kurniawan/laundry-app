@@ -121,16 +121,18 @@
                                                             <i class="fas fa-whatsapp"></i>
                                                             Hubungi Pelanggan
                                                         </a>
-
+                                                        @if (Session::get('role') != 2)
                                                         <form action="{{ route('transaksi.destroy', $t['_id']) }}"
-                                                            method="POST" class="ml-2">
-                                                            <input type="hidden" name="_method" value="DELETE" />
-                                                            <input type="hidden" name="_token"
-                                                                value="{{ csrf_token() }}" />
-                                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                                <i class="fas fa-times"></i> Delete
-                                                            </button>
-                                                        </form>
+                                                        method="POST" class="ml-2">
+                                                        <input type="hidden" name="_method" value="DELETE" />
+                                                        <input type="hidden" name="_token"
+                                                            value="{{ csrf_token() }}" />
+                                                        <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                            <i class="fas fa-times"></i> Delete
+                                                        </button>
+                                                    </form>
+                                                        @endif
+
                                                     </div>
                                                 </td>
                                             </tr>
