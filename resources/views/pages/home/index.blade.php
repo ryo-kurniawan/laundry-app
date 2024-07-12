@@ -58,12 +58,12 @@
                                         <th>No. Hp</th>
                                         <th>Alamat</th>
                                         <th>Orderan</th>
-                                        @if (Session::get('status') == 1)
+
                                         <th>Action</th>
-                                        @endif
+
                                     </tr>
                                     @foreach ($transaksi as $t)
-                                        @if ($t['status'] == 0 || $t['status'] == 9)
+                                        @if (Session::get('status') == 1)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $t['idUser']['namalengkap'] }}
@@ -77,7 +77,7 @@
                                             <td>
                                                 {{ $t['idPaket']['namapaket'] }} / {{ $t['idLayanan']['layanan'] }}
                                             </td>
-                                           @if (Session::get('status') == 1)
+                                           @if ($t['status'] == 0 || $t['status'] == 9)
                                            <td>
                                             <div class="d-flex justify-content-center">
 
@@ -89,9 +89,16 @@
 
                                             </div>
                                         </td>
+                                           @else
+                                           <td>
+                                            <h1>Tidak ada action</h1>
+                                           </td>
+
                                            @endif
                                         </tr>
                                         @endif
+
+
                                     @endforeach
 
 
