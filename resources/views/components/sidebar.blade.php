@@ -23,6 +23,7 @@
                 <a href="{{ route('transaksi.index') }}"
                     class="nav-link "><i class="fas fa-shopping-cart"></i><span>Transaksi</span></a>
             </li>
+            @if (Session::get('role') != 2)
             <li class="nav-item {{ Request::is('riwayat*') ? 'active' : ''}} ">
                 <a href="{{ route('riwayat') }}"
                     class="nav-link "><i class="fas fa-file"></i><span>Riwayat Transaksi</span></a>
@@ -33,6 +34,7 @@
                 <a href="{{ route('laporan') }}"
                     class="nav-link "><i class="fas fa-file"></i><span>Laporan</span></a>
             </li>
+            @endif
             <li class="menu-header">Setting</li>
             <li class="nav-item {{ Request::is('settings*') ? 'active' : ''}} ">
                 <a href="{{ route('settings.index') }}"
