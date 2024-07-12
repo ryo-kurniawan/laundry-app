@@ -81,6 +81,7 @@ class HomeController extends Controller
         'jumlahPelanggan' => $jumlahPelangganRole1,
         'jumlahTransaksi' => $jumlahTransaksi,
         'totalPemasukan' => $totalPemasukan,
+        'transaksi' => $transaksi,
     ]);
 }
 

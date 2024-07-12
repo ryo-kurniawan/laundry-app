@@ -45,6 +45,62 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table-striped table">
+                                    <tr>
+
+                                        <th>No</th>
+                                        <th>Nama Pelanggan</th>
+                                        <th>No. Hp</th>
+                                        <th>Alamat</th>
+                                        <th>Orderan</th>
+                                        @if (Session::get('status') == 1)
+                                        <th>Action</th>
+                                        @endif
+                                    </tr>
+                                    @foreach ($transaksi as $t)
+                                        @if ($t['status'] == 0 || $t['status'] == 9)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $t['idUser']['namalengkap'] }}
+                                            </td>
+                                            <td>
+                                                {{ $t['idUser']['telepon'] }}
+                                            </td>
+                                            <td>
+                                                {{ $t['idUser']['alamat'] }}
+                                            </td>
+                                            <td>
+                                                {{ $t['idPaket']['namapaket'] }} / {{ $t['idLayanan']['layanan'] }}
+                                            </td>
+                                           @if (Session::get('status') == 1)
+                                           <td>
+                                            <div class="d-flex justify-content-center">
+
+                                                <a href='{{ route('transaksi.hubungi', $t['_id']) }}'
+                                                    class="btn btn-sm btn-success btn-icon ml-2">
+                                                    <i class="fas fa-whatsapp"></i>
+                                                    Hubungi Pelanggan
+                                                </a>
+
+                                            </div>
+                                        </td>
+                                           @endif
+                                        </tr>
+                                        @endif
+                                    @endforeach
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endif
             @if (Session::get('role') == 2 || Session::get('role') == 3)
             <div class="row">
