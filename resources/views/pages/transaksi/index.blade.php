@@ -75,36 +75,39 @@
                                                 </td>
                                                 <td>
                                                     @if ($t['status'] == 0)
-                                                    Driver sedang menjempul pakaian anda
+                                                    Menunggu Konfirmasi dari admin
                                                     @endif
                                                     @if ($t['status'] == 1)
-                                                    Pakaian Sedang Ditimbang
+                                                    Driver sedang menjemput pakaian anda
                                                     @endif
                                                     @if ($t['status'] == 2)
-                                                    Pakaian sedang diberi kode
+                                                    Pakaian Sedang Ditimbang
                                                     @endif
                                                     @if ($t['status'] == 3)
-                                                    Pakaian sedang dilakukan pengecekan
+                                                    Pakaian sedang diberi kode
                                                     @endif
                                                     @if ($t['status'] == 4)
-                                                    Pakaian sedang dicuci
+                                                    Pakaian sedang dilakukan pengecekan
                                                     @endif
                                                     @if ($t['status'] == 5)
-                                                    Pakaian sedang dikeringkan
+                                                    Pakaian sedang dicuci
                                                     @endif
                                                     @if ($t['status'] == 6)
-                                                    Pakaian sedang disetrika
+                                                    Pakaian sedang dikeringkan
                                                     @endif
                                                     @if ($t['status'] == 7)
-                                                    Pakaian sedang dipacking
+                                                    Pakaian sedang disetrika
                                                     @endif
                                                     @if ($t['status'] == 8)
-                                                    Laundry selesai
+                                                    Pakaian sedang dipacking
                                                     @endif
                                                     @if ($t['status'] == 9)
-                                                    Driver mengantarkan pakaian anda
+                                                    Laundry selesai
                                                     @endif
                                                     @if ($t['status'] == 10)
+                                                    Driver mengantarkan pakaian anda
+                                                    @endif
+                                                    @if ($t['status'] == 11)
                                                     Pengantaran dan pembayaran selesai
                                                     @endif
 

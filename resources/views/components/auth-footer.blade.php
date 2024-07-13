@@ -1,3 +1,3 @@
   <div class="simple-footer">
-      Copyright &copy; Andras Laundry 2024
+      Copyright &copy; Andra's Laundry 2024
   </div>

@@ -77,7 +77,7 @@
                                             <td>
                                                 {{ $t['idPaket']['namapaket'] }} / {{ $t['idLayanan']['layanan'] }}
                                             </td>
-                                           @if ($t['status'] == 0 || $t['status'] == 9)
+                                           @if ($t['status'] == 0 || $t['status'] == 8)
                                            <td>
                                             <div class="d-flex justify-content-center">
 
