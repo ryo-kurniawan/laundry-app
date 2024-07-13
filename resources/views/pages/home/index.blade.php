@@ -89,11 +89,6 @@
 
                                             </div>
                                         </td>
-                                           @else
-                                           <td>
-                                            <h1>Tidak ada action</h1>
-                                           </td>
-
                                            @endif
                                         </tr>
                                         @endif
