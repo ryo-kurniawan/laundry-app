@@ -14,7 +14,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
+        $url = 'http://103.175.220.104/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
 
         try {
             $response = $client->request('GET', $url);
@@ -36,7 +36,7 @@ class TransaksiController extends Controller
     $client = new Client();
 
     // Ambil data transaksi berdasarkan ID
-    $response = $client->get('http://localhost:5001/transaksi/getbyid/' . $id);
+    $response = $client->get('http://103.175.220.104/transaksi/getbyid/' . $id);
     $transactionData = json_decode($response->getBody()->getContents(), true);
 
     if ($transactionData['status'] !== 200) {
