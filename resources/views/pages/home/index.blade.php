@@ -91,7 +91,7 @@
                                             </td>
                                            @else
                                            <td>
-                                            {{$t['status']}}
+                                            {{$t['status1']}}
                                            </td>
                                            @endif
                                         </tr>

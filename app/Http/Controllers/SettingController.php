@@ -14,9 +14,9 @@ class SettingController extends Controller
     public function index(Request $request)
 {
     $client = new Client();
-    $urlPaket = 'http://127.0.0.1:5001/paket/getallpaket';
-    $urlLayanan = 'http://127.0.0.1:5001/layanan/getalllayanan';
-    $urlPromo = 'http://127.0.0.1:5001/promo/getallpromos';
+    $urlPaket = 'http://103.175.220.104/paket/getallpaket';
+    $urlLayanan = 'http://103.175.220.104/layanan/getalllayanan';
+    $urlPromo = 'http://103.175.220.104/promo/getallpromos';
 
     try {
         // Mengirimkan permintaan ke API untuk data paket, layanan, dan promo
@@ -132,7 +132,7 @@ class SettingController extends Controller
         ]);
 
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/paket/create';
+        $url = 'http://103.175.220.104/paket/create';
 
         try {
             $response = $client->request('POST', $url, [
@@ -161,7 +161,7 @@ class SettingController extends Controller
         ]);
 
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/layanan/create';
+        $url = 'http://103.175.220.104/layanan/create';
 
         try {
             $response = $client->request('POST', $url, [
@@ -192,7 +192,7 @@ class SettingController extends Controller
         ]);
 
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/promo/create';
+        $url = 'http://103.175.220.104/promo/create';
 
         try {
             $response = $client->request('POST', $url, [
@@ -233,7 +233,7 @@ class SettingController extends Controller
     public function editPaket($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/paket/getbyid/' . $id;
+        $url = 'http://103.175.220.104/paket/getbyid/' . $id;
 
         try {
             $response = $client->request('GET', $url);
@@ -260,7 +260,7 @@ class SettingController extends Controller
         try {
 
             $client = new Client();
-            $url = 'http://127.0.0.1:5001/paket/edit/' . $id;
+            $url = 'http://103.175.220.104/paket/edit/' . $id;
 
             $response = $client->request('PUT', $url, [
                 'json' => $request->all(),
@@ -281,7 +281,7 @@ class SettingController extends Controller
     public function editLayanan($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/layanan/getbyid/' . $id;
+        $url = 'http://103.175.220.104/layanan/getbyid/' . $id;
 
         try {
             $response = $client->request('GET', $url);
@@ -307,7 +307,7 @@ class SettingController extends Controller
         try {
 
             $client = new Client();
-            $url = 'http://127.0.0.1:5001/layanan/edit/' . $id;
+            $url = 'http://103.175.220.104/layanan/edit/' . $id;
 
             $response = $client->request('PUT', $url, [
                 'json' => $request->all(),
@@ -329,7 +329,7 @@ class SettingController extends Controller
     public function editPromo($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/promo/getbyid/' . $id;
+        $url = 'http://103.175.220.104/promo/getbyid/' . $id;
 
         try {
             $response = $client->request('GET', $url);
@@ -356,7 +356,7 @@ class SettingController extends Controller
     ]);
 
     $client = new Client();
-    $url = 'http://127.0.0.1:5001/promo/update/' . $id;
+    $url = 'http://103.175.220.104/promo/update/' . $id;
 
     try {
         // Prepare the data for the request
@@ -412,7 +412,7 @@ class SettingController extends Controller
     public function destroyPromo($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/promo/delete/' . $id;
+        $url = 'http://103.175.220.104/promo/delete/' . $id;
 
         try {
             $response = $client->request('DELETE', $url);
@@ -431,7 +431,7 @@ class SettingController extends Controller
     public function destroyLayanan($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/layanan/delete/' . $id;
+        $url = 'http://103.175.220.104/layanan/delete/' . $id;
 
         try {
             $response = $client->request('DELETE', $url);
@@ -450,7 +450,7 @@ class SettingController extends Controller
     public function destroyPaket($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/paket/delete/' . $id;
+        $url = 'http://103.175.220.104/paket/delete/' . $id;
 
         try {
             $response = $client->request('DELETE', $url);

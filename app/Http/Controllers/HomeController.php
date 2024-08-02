@@ -11,8 +11,8 @@ class HomeController extends Controller
     public function index()
 {
     $client = new \GuzzleHttp\Client();
-    $url = 'http://127.0.0.1:5001/user/getAllUsers';
-    $urlTransaksi = 'http://127.0.0.1:5001/transaksi/getAllTransaksi';
+    $url = 'http://103.175.220.104/user/getAllUsers';
+    $urlTransaksi = 'http://103.175.220.104/transaksi/getAllTransaksi';
 
     try {
         $response = $client->get($url);
@@ -89,7 +89,7 @@ public function ubahStatusDriver($id, Request $request)
 {
     $status = $request->input('status');
     $client = new \GuzzleHttp\Client();
-    $url = 'http://127.0.0.1:5001/user/edit-status-driver/' . $id;
+    $url = 'http://103.175.220.104/user/edit-status-driver/' . $id;
 
     try {
         $response = $client->request('PUT', $url, [

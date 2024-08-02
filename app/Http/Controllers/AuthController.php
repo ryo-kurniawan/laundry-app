@@ -32,7 +32,7 @@ class AuthController extends Controller
             'telepon' => 'required|string',
         ]);
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/user/register';
+        $url = 'http://103.175.220.104/user/register';
         try {
             $response = $client->request('POST', $url, [
                 'json' => [
@@ -83,7 +83,7 @@ class AuthController extends Controller
         ]);
 
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/user/login';
+        $url = 'http://103.175.220.104/user/login';
 
         try {
             $response = $client->request('POST', $url, [

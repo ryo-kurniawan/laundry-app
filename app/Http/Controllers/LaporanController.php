@@ -19,7 +19,7 @@ class LaporanController extends Controller
 {
     // Fetch data from your endpoint
     $client = new \GuzzleHttp\Client();
-    $response = $client->get('http://localhost:5001/transaksi/getAllTransaksi');
+    $response = $client->get('http://103.175.220.104/transaksi/getAllTransaksi');
     $transactions = json_decode($response->getBody()->getContents(), true);
 
     // Filter transactions by date if needed

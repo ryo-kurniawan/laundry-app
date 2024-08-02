@@ -16,7 +16,7 @@ class PelangganController extends Controller
     public function index(Request $request)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/user/getAllUsers';
+        $url = 'http://103.175.220.104/user/getAllUsers';
 
         try {
             // Mendapatkan kata kunci pencarian dari input form
@@ -97,7 +97,7 @@ class PelangganController extends Controller
     public function edit($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/user/getById/' . $id;
+        $url = 'http://103.175.220.104/user/getById/' . $id;
 
         try {
             $response = $client->request('GET', $url);
@@ -162,7 +162,7 @@ class PelangganController extends Controller
     public function destroy($id)
     {
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/user/delete/' . $id;
+        $url = 'http://103.175.220.104/user/delete/' . $id;
 
         try {
             $response = $client->request('DELETE', $url);

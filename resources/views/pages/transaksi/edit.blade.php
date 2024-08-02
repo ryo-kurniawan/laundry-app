@@ -165,14 +165,7 @@
                                             <option value="11">Pengantaran dan pembayaran selesai</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Bukti Pembayaran</label>
-                                        @if (!empty($transaksi['data']['buktiPembayaran']))
-                                    <div class="mt-3">
-                                        <img src="http://127.0.0.1:5001/static/{{ $transaksi['data']['buktiPembayaran'] }}" alt="Bukti Pembayaran" width="200">
-                                    </div>
-                                @endif
-                                    </div>
+
                                     <div class="form-group">
                                         <label>Tanggal Transaksi</label>
                                         <input type="text" class="form-control @error('tanggal') is-invalid @enderror"

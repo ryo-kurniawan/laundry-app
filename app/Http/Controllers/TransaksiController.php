@@ -138,7 +138,7 @@ public function riwayat(Request $request)
     {
         // Mengambil data transaksi dari API menggunakan GuzzleHTTP
         $client = new Client();
-        $response = $client->request('GET', 'http://127.0.0.1:5001/transaksi/getbyid/' . $id);
+        $response = $client->request('GET', 'http://103.175.220.104/transaksi/getbyid/' . $id);
         $transaksi = json_decode($response->getBody()->getContents(), true);
 
         // Jika data transaksi tidak ditemukan, redirect ke halaman sebelumnya
@@ -165,7 +165,7 @@ public function riwayat(Request $request)
 
         // Inisialisasi GuzzleHttp Client
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/transaksi/update/' . $id;
+        $url = 'http://103.175.220.104/transaksi/update/' . $id;
 
         try {
             // Data yang akan dikirim ke API
@@ -201,7 +201,7 @@ public function riwayat(Request $request)
 
         // Mengambil data transaksi dari API atau database
         $client = new Client();
-        $url = 'http://127.0.0.1:5001/transaksi/getbyid/' . $id;
+        $url = 'http://103.175.220.104/transaksi/getbyid/' . $id;
 
         try {
             // Mengirim request ke API untuk mendapatkan data transaksi berdasarkan ID
@@ -228,7 +228,7 @@ public function riwayat(Request $request)
 
         try {
             // Memanggil endpoint API untuk menghapus transaksi
-            $response = $client->delete('http://127.0.0.1:5001/transaksi/delete/' . $id);
+            $response = $client->delete('http://103.175.220.104/transaksi/delete/' . $id);
 
             if ($response->getStatusCode() == 200) {
                 return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dihapus');
