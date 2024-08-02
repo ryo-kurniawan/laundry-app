@@ -72,7 +72,7 @@ class TransaksiController extends Controller
 public function riwayat(Request $request)
 {
     $client = new \GuzzleHttp\Client();
-    $url = 'http://127.0.0.1:5001/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
+    $url = 'http://103.175.220.104/transaksi/getAllTransaksi'; // Sesuaikan URL dengan route di Express.js
 
     try {
         $response = $client->request('GET', $url);
