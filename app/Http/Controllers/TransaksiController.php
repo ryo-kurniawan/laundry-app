@@ -57,6 +57,7 @@ class TransaksiController extends Controller
     $message .= "Order: " . $transaction['idPaket']['namapaket'] . " / " . $transaction['idLayanan']['layanan'] . "\n";
     $message .= "Berat: " . $transaction['berat'] . " kg\n";
     $message .= "Detail: " . str_replace("\r\n", "\n", $transaction['detail']) . "\n";
+    $message .= "Total: " . format_currency($transaction['berat'] * $transaction['idPaket']['harga']) . "\n";
     $message .= "Tanggal: " . date('d-m-Y', strtotime($transaction['tanggal'])) . "\n\n";
     $message .= "Terima kasih!\nAndras Laundry";
 
