@@ -58,7 +58,7 @@
                                         <th>No. Hp</th>
                                         <th>Alamat</th>
                                         <th>Orderan</th>
-
+                                        <th>Posisi Laundry</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -77,6 +77,15 @@
                                             <td>
                                                 {{ $t['idPaket']['namapaket'] }} / {{ $t['idLayanan']['layanan'] }}
                                             </td>
+                                            @if ($t['status'] == 1)
+                                                <td>
+                                                    Ada di Lokasi CLient
+                                                </td>
+                                            @else
+                                                <td>
+                                                    Ada di Lokasi Laundry
+                                                </td>
+                                            @endif
                                            @if ($t['status'] == 1 || $t['status'] == 10)
                                            <td>
                                             <div class="d-flex justify-content-center">
