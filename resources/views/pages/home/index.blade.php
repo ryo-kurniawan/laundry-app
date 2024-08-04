@@ -63,7 +63,7 @@
 
                                     </tr>
                                     @foreach ($transaksi as $t)
-                                        @if (Session::get('status') == 1)
+                                        @if (Session::get('status') == 1 && $t['status'] != 11)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $t['idUser']['namalengkap'] }}
@@ -79,7 +79,7 @@
                                             </td>
                                             @if ($t['status'] == 1)
                                                 <td>
-                                                    Ada di Lokasi CLient
+                                                    Ada di Lokasi Client
                                                 </td>
                                             @else
                                                 <td>
