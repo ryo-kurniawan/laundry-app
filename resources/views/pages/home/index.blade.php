@@ -91,42 +91,7 @@
                                             </td>
                                            @else
                                            <td>
-                                            @if ($t['status'] == 0)
-                                                    Menunggu Konfirmasi dari admin
-                                                    @endif
-                                                    @if ($t['status'] == 1)
-                                                    Driver sedang menjemput pakaian anda
-                                                    @endif
-                                                    @if ($t['status'] == 2)
-                                                    Pakaian Sedang Ditimbang
-                                                    @endif
-                                                    @if ($t['status'] == 3)
-                                                    Pakaian sedang diberi kode
-                                                    @endif
-                                                    @if ($t['status'] == 4)
-                                                    Pakaian sedang dilakukan pengecekan
-                                                    @endif
-                                                    @if ($t['status'] == 5)
-                                                    Pakaian sedang dicuci
-                                                    @endif
-                                                    @if ($t['status'] == 6)
-                                                    Pakaian sedang dikeringkan
-                                                    @endif
-                                                    @if ($t['status'] == 7)
-                                                    Pakaian sedang disetrika
-                                                    @endif
-                                                    @if ($t['status'] == 8)
-                                                    Pakaian sedang dipacking
-                                                    @endif
-                                                    @if ($t['status'] == 9)
-                                                    Laundry selesai
-                                                    @endif
-                                                    @if ($t['status'] == 10)
-                                                    Driver mengantarkan pakaian anda
-                                                    @endif
-                                                    @if ($t['status'] == 11)
-                                                    Pengantaran dan pembayaran selesai
-                                                    @endif
+                                            Menunggu Konfirmasi Admin
 
                                            </td>
                                            @endif
