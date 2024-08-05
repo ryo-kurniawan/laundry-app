@@ -110,7 +110,9 @@
                                                 </button>
                                             </form>
                                             @else
-                                            Orderan Sudah Diambil oleh {{ $t['idDriver']['namalengkap'] }}
+                                            <div class="ml-2">
+                                                <b>Orderan Sudah Diambil oleh {{ $t['idDriver']['namalengkap'] }}</b>
+                                            </div>
                                                @endif
 
 
