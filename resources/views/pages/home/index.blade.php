@@ -24,8 +24,14 @@
 
 
             </div>
+            <div class="row">
+                <div class="col-12">
+                    @include('layouts.alert')
+                </div>
+            </div>
             @if (Session::get('role') == 4)
             <div class="row">
+
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
@@ -95,13 +101,17 @@
                                                     <i class="fas fa-whatsapp"></i>
                                                     Hubungi Pelanggan
                                                 </a>
-                                                <form id="orderan-form-{{ $t['_id'] }}" action="{{ route('ambil-orderan', ['id' => $t['_id'], 'idDriver' => Session::get('user_id') ]) }}" method="POST" class="ml-2">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit" class="btn btn-sm btn-primary btn-icon">
-                                                        <i class="fas fa-truck"></i> Ambil Orderan
-                                                    </button>
-                                                </form>
+                                               @if ($t['idDriver'] == null)
+                                               <form id="orderan-form-{{ $t['_id'] }}" action="{{ route('ambil-orderan', ['id' => $t['_id'], 'idDriver' => Session::get('user_id') ]) }}" method="POST" class="ml-2">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-sm btn-primary btn-icon">
+                                                    <i class="fas fa-truck"></i> Ambil Orderan
+                                                </button>
+                                            </form>
+                                            @else
+                                            Orderan Sudah Diambil oleh {{ $t['idDriver']['namalengkap'] }}
+                                               @endif
 
 
                                             </div>
