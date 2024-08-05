@@ -108,7 +108,7 @@ public function ubahStatusDriver($id, Request $request)
         if ($statusCode == 200 ) {
             // Perbarui sesi dengan status terbaru
             Session::put('status', $status);
-            return redirect()->route('home.index')->with('success', 'Status updated successfully');
+            return redirect()->route('home')->with('success', 'Status updated successfully');
         } else {
             $errorMsg = isset($responseBody['msg']) ? $responseBody['msg'] : 'Failed to update status';
             return back()->with('error', 'Failed to update status: ' . $errorMsg);
@@ -136,7 +136,7 @@ function ambilOrderan($id, $idDriver)
         $statusCode = $response->getStatusCode();
         $responseBody = json_decode($response->getBody(), true);
         if ($statusCode == 200) {
-            return redirect()->route('home.index')->with('success-get-order', $responseBody['msg']);
+            return redirect()->route('home')->with('success-get-order', $responseBody['msg']);
         } else {
             $errorMsg = isset($responseBody['msg']) ? $responseBody['msg'] : 'Failed to update status';
             return back()->with('error-get-order', 'Failed to update status: ' . $errorMsg);
