@@ -118,4 +118,32 @@ public function ubahStatusDriver($id, Request $request)
     }
 }
 
+function ambilOrderan($id, $idDriver)
+{
+    $client = new \GuzzleHttp\Client();
+    $url = 'http://103.175.220.104/transaksi/ambilorderan/' . $id;
+
+    try {
+        $response = $client->request('PUT', $url, [
+            'json' => [
+                'idDriver' => $idDriver
+            ],
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json'
+            ]
+        ]);
+        $statusCode = $response->getStatusCode();
+        $responseBody = json_decode($response->getBody(), true);
+        if ($statusCode == 200) {
+            return redirect()->route('home.index')->with('success', $responseBody['msg']);
+        } else {
+            $errorMsg = isset($responseBody['msg']) ? $responseBody['msg'] : 'Failed to update status';
+            return back()->with('error', 'Failed to update status: ' . $errorMsg);
+        }
+    } catch (\Exception $e) {
+        return back()->with('error', 'Failed to update status: ' . $e->getMessage());
+    }
+}
+
 }
