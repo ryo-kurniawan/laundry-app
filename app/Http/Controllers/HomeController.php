@@ -136,13 +136,13 @@ function ambilOrderan($id, $idDriver)
         $statusCode = $response->getStatusCode();
         $responseBody = json_decode($response->getBody(), true);
         if ($statusCode == 200) {
-            return redirect()->route('home.index')->with('success', $responseBody['msg']);
+            return redirect()->route('home.index')->with('success-get-order', $responseBody['msg']);
         } else {
             $errorMsg = isset($responseBody['msg']) ? $responseBody['msg'] : 'Failed to update status';
-            return back()->with('error', 'Failed to update status: ' . $errorMsg);
+            return back()->with('error-get-order', 'Failed to update status: ' . $errorMsg);
         }
     } catch (\Exception $e) {
-        return back()->with('error', 'Failed to update status: ' . $e->getMessage());
+        return back()->with('error-get-order', 'Failed to update status: ' . $e->getMessage());
     }
 }
 
