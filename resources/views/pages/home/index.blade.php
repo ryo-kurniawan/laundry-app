@@ -95,7 +95,7 @@
                                                     <i class="fas fa-whatsapp"></i>
                                                     Hubungi Pelanggan
                                                 </a>
-                                                <form id="orderan-form-{{ $t['_id'] }}" action="{{ route('ambil-orderan', $t['_id'], Session::get('user_id')) }}" method="POST" class="ml-2">
+                                                <form id="orderan-form-{{ $t['_id'] }}" action="{{ route('ambil-orderan', ['id' => $t['_id'], 'idDriver' => Session::get('user_id') ]) }}" method="POST" class="ml-2">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="button" class="btn btn-sm btn-primary btn-icon">
