@@ -98,7 +98,7 @@
                                                 <form id="orderan-form-{{ $t['_id'] }}" action="{{ route('ambil-orderan', ['id' => $t['_id'], 'idDriver' => Session::get('user_id') ]) }}" method="POST" class="ml-2">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="button" class="btn btn-sm btn-primary btn-icon">
+                                                    <button type="submit" class="btn btn-sm btn-primary btn-icon">
                                                         <i class="fas fa-truck"></i> Ambil Orderan
                                                     </button>
                                                 </form>
