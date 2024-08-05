@@ -105,7 +105,7 @@ public function ubahStatusDriver($id, Request $request)
         $statusCode = $response->getStatusCode();
         $responseBody = json_decode($response->getBody(), true);
 
-        if ($statusCode == 200 && isset($responseBody['sukses']) && $responseBody['sukses'] == true) {
+        if ($statusCode == 200 ) {
             // Perbarui sesi dengan status terbaru
             Session::put('status', $status);
             return redirect()->route('home.index')->with('success', 'Status updated successfully');
