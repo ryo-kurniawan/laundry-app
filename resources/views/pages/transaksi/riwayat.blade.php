@@ -54,7 +54,7 @@
                                             <th class="text-center">Action</th>
                                         </tr>
                                         @foreach ($transaksis as $t)
-                                            @if ($t['status'] == 10)
+                                            @if ($t['status'] == 11)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $t['idUser']['namalengkap'] }}
