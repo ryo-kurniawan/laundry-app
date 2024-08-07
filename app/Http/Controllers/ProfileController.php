@@ -12,7 +12,23 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('pages.profile.index');
+        $id = Session::get('user_id');
+        $client = new Client();
+        $url = 'http://103.175.220.104/user/getById/' . $id;
+        try {
+            $response = $client->request('GET', $url);
+            $statusCode = $response->getStatusCode(); // Mendapatkan kode status HTTP
+
+            if ($statusCode == 200) {
+                $userData = json_decode($response->getBody()->getContents(), true);
+                return view('pages.profile.index', compact('userData'));
+            } else {
+                return back()->with('error', 'Failed to fetch user data: Status code ' . $statusCode);
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to fetch user data: ' . $e->getMessage());
+        }
+
     }
 
     /**

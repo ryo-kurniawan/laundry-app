@@ -95,20 +95,24 @@ class AuthController extends Controller
 
             $data = json_decode($response->getBody()->getContents(), true);
 
-            if (isset($data['msg']) && $data['msg'] == 'Berhasil Login') {
-                Session::put([
-                    'logged_in' => true,
-                    'user_id' => $data['data']['_id'],
-                    'username' => $data['data']['username'],
-                    'name' => $data['data']['namalengkap'],
-                    'phone' => $data['data']['telepon'],
-                    'role' => $data['data']['role'],
-                    'status' => $data['data']['status']
-                ]);
-                $request->session()->regenerate();
-                return redirect('/home');
+            if($data['data']['role'] != 1){
+                if (isset($data['msg']) && $data['msg'] == 'Berhasil Login') {
+                    Session::put([
+                        'logged_in' => true,
+                        'user_id' => $data['data']['_id'],
+                        'username' => $data['data']['username'],
+                        'name' => $data['data']['namalengkap'],
+                        'phone' => $data['data']['telepon'],
+                        'role' => $data['data']['role'],
+                        'status' => $data['data']['status']
+                    ]);
+                    $request->session()->regenerate();
+                    return redirect('/home');
+                } else {
+                    return back()->withErrors(['message' => $data['msg']]);
+                }
             } else {
-                return back()->withErrors(['message' => $data['msg']]);
+                return back()->withErrors(['message' => 'Pelanggan hanya bisa login di aplikasi mobile']);
             }
         } catch (\Exception $e) {
             return back()->withErrors(['message' => 'Unable to login, please try again later']);
