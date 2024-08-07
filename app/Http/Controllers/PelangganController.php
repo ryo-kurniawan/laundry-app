@@ -128,7 +128,7 @@ class PelangganController extends Controller
     ]);
 
     $client = new Client();
-    $url = 'http://127.0.0.1:5001/user/edit/' . $id;
+    $url = 'http://103.175.220.104/user/edit/' . $id;
 
     try {
         $response = $client->request('PUT', $url, [
