@@ -26,7 +26,7 @@
                     Ubah informasi tentang diri anda di sini.
                 </p>
 
-                <div class="row mt-sm-4">
+
 
                     <div class="row">
                         <div class="col-12">
@@ -101,7 +101,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+
             </div>
         </section>
     </div>
